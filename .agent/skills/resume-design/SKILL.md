@@ -1,9 +1,9 @@
 ---
-name: pdf-export
-description: 최적화된 Markdown 이력서를 프로페셔널한 HTML(→PDF) 파일로 변환하는 스킬
+name: resume-design
+description: 최적화된 이력서를 사용자 맞춤 디자인의 프로페셔널한 HTML로 변환하는 스킬
 ---
 
-# 프로페셔널 이력서 변환 스킬 (Professional Export)
+# 이력서 디자인 스킬 (Resume Design)
 
 ## 목적
 
@@ -55,6 +55,8 @@ HTML 이력서를 생성하기 **전에** 사용자에게 디자인 선호도를
 
 사용자 답변에 따라 아래 프리셋을 적용합니다:
 
+#### 컬러 프리셋
+
 | 프리셋 | Primary | Accent | Highlight | 배경 |
 |--------|---------|--------|-----------|------|
 | **(a) 네이비 + 레드** | `#1a1a2e` | `#0f3460` | `#e94560` | `#f8f9fb` |
@@ -62,11 +64,20 @@ HTML 이력서를 생성하기 **전에** 사용자에게 디자인 선호도를
 | **(c) 딥그린 + 화이트** | `#1b4332` | `#2d6a4f` | `#40916c` | `#f7faf8` |
 | **(d) 모던 그레이** | `#333333` | `#555555` | `#0077b6` | `#f5f5f5` |
 
+#### 폰트 프리셋
+
+| 프리셋 | CDN 링크 | font-family |
+|--------|----------|-------------|
+| **(a) Pretendard** | `https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css` | `'Pretendard'` |
+| **(b) Noto Serif KR** | `https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&display=swap` | `'Noto Serif KR'` |
+| **(c) IBM Plex Sans KR** | `https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap` | `'IBM Plex Sans KR'` |
+
 ### 3. HTML 생성
 
 1. 최적화된 이력서(`.md`)의 내용을 읽습니다.
-2. 사용자 선호도가 반영된 CSS + HTML 파일을 `write_to_file` 도구로 직접 생성합니다.
-3. `output/[회사명]_[직무명]_이력서.html` 경로에 저장합니다.
+2. 사용자가 선택한 **컬러 프리셋 + 폰트 프리셋**의 CSS 변수와 CDN을 적용합니다.
+3. `write_to_file` 도구로 HTML 파일을 직접 생성합니다.
+4. `output/[회사명]_[직무명]_이력서.html` 경로에 저장합니다.
 
 ### PDF로 변환 (사용자가 수동)
 
@@ -77,6 +88,7 @@ HTML 이력서를 생성하기 **전에** 사용자에게 디자인 선호도를
 ## HTML 템플릿 구조
 
 아래 구조를 따라 HTML 파일을 생성합니다. **모든 CSS는 인라인(`<style>` 태그)**으로 포함하여 외부 의존성이 없어야 합니다.
+폰트 CDN은 사용자가 선택한 프리셋에 맞는 것을 사용합니다.
 
 ```html
 <!DOCTYPE html>
@@ -84,35 +96,36 @@ HTML 이력서를 생성하기 **전에** 사용자에게 디자인 선호도를
 <head>
     <meta charset="UTF-8">
     <title>[이름] - [직무명] 이력서</title>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+    <!-- 사용자 선택에 맞는 폰트 CDN -->
+    <link href="[선택된 폰트 CDN URL]" rel="stylesheet">
     <style>
-        /* 반드시 templates/resume.css의 스타일을 여기에 인라인으로 포함 */
-        /* @page, body, h1~h4, table, ul, hr 등 모든 스타일 포함 */
+        :root {
+            --primary: [선택된 Primary];
+            --accent: [선택된 Accent];
+            --highlight: [선택된 Highlight];
+            --bg-light: [선택된 배경];
+        }
+        /* 공통 레이아웃 스타일 */
+        @page { size: A4; margin: 15mm 20mm; }
+        body { font-family: [선택된 font-family], sans-serif; }
+        /* ... 나머지 스타일 ... */
     </style>
 </head>
 <body>
-    <!-- 이력서 내용을 HTML 태그로 변환하여 작성 -->
-    <h1>이름</h1>
-    <h2>지원 포지션: 직무명 — 회사명</h2>
-    <hr>
-    <h3>핵심 역량 요약</h3>
-    <p>...</p>
-    <!-- 이하 동일한 패턴 -->
+    <!-- 이력서 내용 -->
 </body>
 </html>
 ```
 
-## 디자인 원칙
+## 디자인 공통 원칙
 
-아래 `templates/resume.css` 파일의 스타일을 참조하여 적용합니다:
+프리셋과 무관하게 아래 원칙은 항상 적용합니다:
 
-1. **컬러 팔레트**: 네이비(`#1a1a2e`), 다크블루(`#0f3460`), 레드 악센트(`#e94560`)
-2. **폰트**: Pretendard (한글 최적화, CDN 로드)
-3. **레이아웃**: A4 기준, 상하 15mm / 좌우 20mm 여백
-4. **테이블**: 헤더 네이비 배경 + 짝수행 연밝은 회색
-5. **섹션 구분**: `<h3>` 하단에 얇은 보더라인
-6. **핵심 역량**: 왼쪽 레드 보더 + 연한 배경 강조
+1. **페이지**: A4 기준, 상하 15mm / 좌우 20mm 여백 (1페이지 선택 시 12mm/16mm로 축소)
+2. **테이블**: 헤더 Primary 색상 배경 + 짝수행 연한 배경
+3. **섹션 구분**: `<h2>` 하단에 border-bottom
+4. **핵심 역량**: 왼쪽 Highlight 보더 + 연한 배경 강조
+5. **인쇄 최적화**: `-webkit-print-color-adjust: exact` 적용
 
 ## 마크다운 → HTML 변환 규칙
 
