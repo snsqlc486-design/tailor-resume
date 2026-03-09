@@ -28,7 +28,10 @@ cd tailor-resume
 
 ### 2단계: 내 이력서 준비
 
-프로젝트 폴더에 `이력서.txt` 파일을 만들고 본인의 이력서 내용을 붙여넣습니다.
+프로젝트 폴더에 이력서 파일을 만들고 본인의 이력서 내용을 붙여넣습니다.
+
+- 기본 파일명: `이력서.txt`
+- 다른 이름이나 형식도 OK: `resume.md`, `내이력서.txt` 등 (`.txt`, `.md` 지원)
 
 ```
 resume-tailor/
@@ -72,6 +75,13 @@ Claude Code가 실행되면 채팅 인터페이스가 나타납니다. 여기에
 ```
 /tailor-resume
 이 공고에 맞춰 이력서 만들어줘: https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=12345678
+```
+
+다른 이력서 파일을 지정하고 싶다면:
+
+```
+/tailor-resume
+@resume.md 이 이력서로 이 공고에 맞춰 만들어줘: https://example.com/job
 ```
 
 Claude가 자동으로:
