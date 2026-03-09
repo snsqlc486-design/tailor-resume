@@ -133,6 +133,24 @@ https://example.com/job/data-analyst
 이력서 프로페셔널하게 HTML로도 만들어줘
 ```
 
+### 전문가 리뷰 요청
+
+```
+이력서 전문가 리뷰 해줘
+```
+
+```
+HR 입장에서 이력서 리뷰 해줘
+```
+
+```
+이력서 디자인 리뷰 해줘
+```
+
+```
+리뷰 피드백 반영해서 이력서 수정해줘
+```
+
 ---
 
 ## ⚙️ 에이전트 동작 흐름
@@ -144,6 +162,8 @@ https://example.com/job/data-analyst
 4. 이력서 생성        →  최적화된 이력서를 Markdown으로 생성
 5. 저장 및 리뷰       →  output/[회사명]_[직무명]_이력서.md로 저장
 6. HTML 변환 (선택)   →  프로페셔널한 디자인의 HTML 파일 생성
+7. 전문가 리뷰 (선택) →  👔HR / 🎯취업전문가 / 🎨디자이너 리뷰
+8. 피드백 적용       →  리뷰 결과 반영하여 이력서/HTML 수정
 ```
 
 ---
@@ -172,10 +192,12 @@ resume-tailor/
     └── skills/
         ├── job-analysis/
         │   └── SKILL.md                # 직업 공고 분석 스킬
-        └── pdf-export/
-            ├── SKILL.md                # 프로페셔널 HTML 변환 스킬
-            └── templates/
-                └── resume.css          # 이력서 디자인 스타일
+        ├── pdf-export/
+        │   ├── SKILL.md                # 프로페셔널 HTML 변환 스킬
+        │   └── templates/
+        │       └── resume.css          # 이력서 디자인 스타일
+        └── resume-review/
+            └── SKILL.md                # 👔HR/🎯취업전문가/🎨디자인 리뷰 스킬
 ```
 
 ---
