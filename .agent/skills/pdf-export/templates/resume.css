@@ -1,0 +1,198 @@
+/* ============================================
+   프로페셔널 이력서 PDF 스타일시트
+   ============================================ */
+
+:root {
+  --primary-color: #1a1a2e;
+  --accent-color: #0f3460;
+  --highlight-color: #e94560;
+  --text-color: #2c3e50;
+  --text-light: #5a6c7d;
+  --border-color: #dce1e8;
+  --bg-light: #f8f9fb;
+  --font-main: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+@page {
+  size: A4;
+  margin: 15mm 20mm;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  font-size: 10pt;
+  line-height: 1.6;
+  color: var(--text-color);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ---- 이름 (h1) ---- */
+h1 {
+  font-family: var(--font-heading);
+  font-size: 22pt;
+  font-weight: 800;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 4px;
+  letter-spacing: -0.5px;
+}
+
+/* ---- 지원 포지션 (h2 첫번째) ---- */
+h2:first-of-type {
+  font-size: 10pt;
+  font-weight: 500;
+  color: var(--accent-color);
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--highlight-color);
+}
+
+/* ---- 섹션 제목 (h3) ---- */
+h3 {
+  font-family: var(--font-heading);
+  font-size: 12pt;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-top: 18px;
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1.5px solid var(--border-color);
+  letter-spacing: -0.3px;
+}
+
+/* ---- 하위 섹션 (h4) ---- */
+h4 {
+  font-size: 10.5pt;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+
+/* ---- 핵심 역량 요약 ---- */
+h3 + hr + p,
+h2:first-of-type + hr + h3 + p {
+  background: var(--bg-light);
+  padding: 10px 14px;
+  border-left: 3px solid var(--highlight-color);
+  border-radius: 0 4px 4px 0;
+  font-size: 9.5pt;
+  line-height: 1.7;
+  color: var(--text-color);
+  margin-bottom: 12px;
+}
+
+/* ---- 단락 ---- */
+p {
+  margin-bottom: 6px;
+  font-size: 10pt;
+  line-height: 1.65;
+}
+
+/* ---- 강조 텍스트 ---- */
+strong {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+em {
+  font-style: italic;
+  color: var(--text-light);
+}
+
+/* ---- 목록 ---- */
+ul, ol {
+  margin-left: 16px;
+  margin-bottom: 6px;
+}
+
+li {
+  margin-bottom: 3px;
+  font-size: 9.5pt;
+  line-height: 1.6;
+}
+
+li::marker {
+  color: var(--highlight-color);
+}
+
+/* ---- 테이블 ---- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0 14px 0;
+  font-size: 9.5pt;
+}
+
+thead {
+  background: var(--primary-color);
+  color: #ffffff;
+}
+
+th {
+  padding: 6px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 9pt;
+  letter-spacing: 0.3px;
+}
+
+td {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+tbody tr:nth-child(even) {
+  background: var(--bg-light);
+}
+
+/* ---- 구분선 ---- */
+hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 10px 0;
+}
+
+/* ---- 인라인 코드 (기술 키워드) ---- */
+code {
+  background: var(--bg-light);
+  color: var(--accent-color);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 9pt;
+  font-family: var(--font-main);
+  border: 1px solid var(--border-color);
+}
+
+/* ---- 링크 ---- */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+/* ---- 페이지 브레이크 방지 ---- */
+h3, h4 {
+  page-break-after: avoid;
+}
+
+li, tr {
+  page-break-inside: avoid;
+}
+
+/* ---- 기타 섹션 제목 (h2) ---- */
+h2 {
+  font-size: 10pt;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-top: 14px;
+  margin-bottom: 6px;
+}
