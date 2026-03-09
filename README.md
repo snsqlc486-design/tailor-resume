@@ -20,8 +20,8 @@
 ### 1단계: 프로젝트 다운로드
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/resume-tailor.git
-cd resume-tailor
+git clone https://github.com/jaewpark87/tailor-resume.git
+cd tailor-resume
 ```
 
 > GitHub에 올리지 않았다면 폴더를 직접 복사해도 됩니다.
@@ -55,7 +55,7 @@ OO회사 데이터팀/사원
 
 ```bash
 # 프로젝트 폴더로 이동
-cd resume-tailor
+cd tailor-resume
 
 # Claude Code 실행
 claude
